@@ -302,6 +302,7 @@ form.addEventListener('submit', async (e) => {
 
                     if (dataMateriales.exito) {
                         alert("Producto agregado correctamente");
+                        form.reset();
                     } else {
                         alert("Error al agregar materiales: " + dataMateriales.error);
                     }

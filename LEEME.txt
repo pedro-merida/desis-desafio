@@ -1,0 +1,27 @@
+Versión de la Base de Datos: PostgreSQL 17.4
+Versión de PHP: PHP Versión 8.2.12
+
+Para correr el proyecto se necesitan los siguientes programas:
+
+- pgAdmin 4
+- XAMPP
+
+1.- Clonar el proyecto de GitHub en la carpeta XAMPP/htdocs
+
+2.- Abrir pgAdmin 4, crear una base de datos y restaurarla usando el archivo pg-desafio.sql ubicado en la carpeta sql (usar postgres como usuario)
+
+3.- Abrir XAMPP Control Panel, en la sección Apache ir a config -> PHP -> buscar las líneas:
+
+	extension=pdo_pgsql
+	extension=pdo_sqlite
+	extension=pgsql
+
+y descomentarlas
+
+4.- En la sección Apache, apretar Start
+
+5.- En el archivo conexion.php ubicado en la carpeta php, modificar las credenciales de conexión dependiendo de su usuario, contraseña y nombre de la BD de pgAdmin
+
+6.- En un navegador web, ir a localhost/desis-desafio/
+
+7.- Todo listo!

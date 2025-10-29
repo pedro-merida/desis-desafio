@@ -5,6 +5,7 @@ const sucursal = document.getElementById('sucursal');
 const moneda = document.getElementById('moneda');
 const precio = document.getElementById('precio')
 const descripcion = document.getElementById('descripcion')
+const checkboxes = document.querySelectorAll('.checkbox input[type="checkbox"]');
 
 const form = document.getElementById('form')
 
@@ -54,7 +55,6 @@ function verificar_codigo(codigo){
             return false;
         } 
         else if (respuesta === "disponible") {
-            console.log("El código es válido y disponible");
             return true;
         } 
         else {
@@ -82,7 +82,6 @@ function verificar_nombre(nombre){
         return false
     }
     else {
-        console.log("El nombre es válido");
         return true
     }
 }
@@ -100,20 +99,17 @@ function verificar_precio(precio){
         return false
     }
     else {
-        console.log("El precio es válido");
         return true
     }
 }
 
-function verificar_checkboxes(){
-    const checkboxes = document.querySelectorAll('.checkbox input[type="checkbox"]');
+function verificar_checkboxes(checkboxes){
     const seleccionados = Array.from(checkboxes).filter(chk => chk.checked);
 
     if (seleccionados.length < 2) {
         alert("Debe seleccionar al menos dos materiales para el producto")
         return false
     } else {
-        console.log("Materiales seleccionados");
         return true
     }
 }
@@ -126,7 +122,6 @@ function verificar_bodega(bodega){
         return false
     }
     else {
-        console.log("La bodega es válida");
         return true
     }
 }
@@ -139,7 +134,6 @@ function verificar_sucursal(sucursal){
         return false
     }
     else {
-        console.log("La sucursal es válida");
         return true
     }
 }
@@ -152,7 +146,6 @@ function verificar_moneda(moneda){
         return false
     }
     else {
-        console.log("La moneda es válida");
         return true
     }
 }
@@ -170,23 +163,20 @@ function verificar_descripcion(descripcion){
         return false
     }
     else {
-        console.log("La descripción es válida");
         return true
     }
 }
 
-
+//Obtener las bodegas disponibles
 document.addEventListener('DOMContentLoaded', () => {
   const selectBodega = document.getElementById('bodega');
 
   fetch('php/obtener_bodegas.php')
     .then(response => response.json())
     .then(data => {
-      console.log("Datos de bodegas:", data);
 
       selectBodega.innerHTML = '<option value="" selected></option>';
 
-      // Agrega una opción por cada bodega
       data.forEach(bodega => {
         const option = document.createElement('option');
         option.value = bodega.id;
@@ -199,6 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//Obtener las sucursales según la bodega
 document.getElementById("bodega").addEventListener("change", function () {
   const idBodega = this.value;
   const sucursalSelect = document.getElementById("sucursal");
@@ -216,7 +207,6 @@ document.getElementById("bodega").addEventListener("change", function () {
   })
     .then(response => response.json())
     .then(data => {
-    console.log("Datos de sucursales:", data);
       data.forEach(sucursal => {
         const option = document.createElement("option");
         option.value = sucursal.id;
@@ -227,17 +217,16 @@ document.getElementById("bodega").addEventListener("change", function () {
     .catch(err => console.error("Error al cargar sucursales:", err));
 });
 
+//Obtener las monedas disponibles
 document.addEventListener('DOMContentLoaded', () => {
   const selectMoneda = document.getElementById('moneda');
 
   fetch('php/obtener_moneda.php')
     .then(response => response.json())
     .then(data => {
-      console.log("Datos de monedas:", data);
 
       selectMoneda.innerHTML = '<option value="" selected></option>';
 
-      // Agrega una opción por cada bodega
       data.forEach(moneda => {
         const option = document.createElement('option');
         option.value = moneda.id;
@@ -250,6 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//Mandar datos del formulario
 form.addEventListener('submit', async (e) => {
     e.preventDefault()
 
@@ -259,7 +249,7 @@ form.addEventListener('submit', async (e) => {
     const sucursal_valida = verificar_sucursal(sucursal);
     const moneda_valida = verificar_moneda(moneda);
     const precio_valido = verificar_precio(precio);
-    const checkboxes_validos = verificar_checkboxes();
+    const checkboxes_validos = verificar_checkboxes(checkboxes);
     const descripcion_valida = verificar_descripcion(descripcion);
 
     const todo_valido =
@@ -290,7 +280,6 @@ form.addEventListener('submit', async (e) => {
             });
 
             const data = await response.json();
-            console.log("Respuesta del servidor:", data);
 
             if (data.exito) {
                 const id_producto = data.id_producto;

@@ -1,15 +1,5 @@
 <?php
-    $host = "localhost";
-    $dbname = "pg-desafio";
-    $user = "postgres";
-    $password = "055361151";
-
-    $conn = pg_connect("host=$host dbname=$dbname user=$user password=$password");
-
-    if (!$conn) {
-        echo "error";
-        exit;
-    }
+    include "conexion.php";
 
     if (isset($_POST['id_bodega'])) {
         $id_bodega = intval($_POST['id_bodega']);

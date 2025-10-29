@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="card">
+        <h1 class="title">Formulario de Producto</h1>
+        <div class="form">
+            <form id="form" action="/">
+                <div class="row">
+                    <div class="column">
+                        <label class="form_label" for="codigo">Código</label>
+                        <input type="text" id="codigo" name="codigo">
+                    </div>
+                    <div class="column">
+                        <label class="form_label" for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <label class="form_label" for="bodega">Bodega</label>
+                        <select id="bodega" name="bodega">
+                            <option value="" selected></option>
+                        </select><br>
+                    </div>
+                    <div class="column">
+                        <label class="form_label" for="sucursal">Sucursal</label>
+                        <select id="sucursal" name="sucursal">
+                            <option value="" selected></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <label class="form_label" for="moneda">Moneda</label>
+                        <select id="moneda" name="moneda">
+                            <option value="" selected></option>
+                        </select>
+                    </div>
+                    <div class="column">
+                        <label class="form_label" for="sucursal">Precio</label>
+                        <input type="text" id="precio" name="precio">
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <div class="form_label">
+                        Material del Producto
+                    </div>
+                    <div>
+                        <input type="checkbox" id="plastico" value="1" name="material[]">
+                        <label for="plastico">Plástico</label>
+
+                        <input type="checkbox" id="metal" value="2" name="material[]">
+                        <label for="metal">Metal</label>
+
+                        <input type="checkbox" id="madera" value="3" name="material[]">
+                        <label for="madera">Madera</label>
+
+                        <input type="checkbox" id="vidrio" value="4" name="material[]">
+                        <label for="vidrio">Vidrio</label>
+
+                        <input type="checkbox" id="textil" value="5" name="material[]">
+                        <label for="textil">Textil</label>
+                    </div>
+                </div>
+                <div class="description">
+                    <label class="form_label" for="descripcion">Descripción</label>
+                    <textarea name="descripcion" id="descripcion"></textarea>
+                </div>
+                <div class="submit_button">
+                    <button type="submit">Guardar Producto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

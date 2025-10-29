@@ -10,6 +10,8 @@ Para correr el proyecto se necesitan los siguientes programas:
 
 2.- Abrir pgAdmin 4, crear una base de datos y restaurarla usando el archivo pg-desafio.sql ubicado en la carpeta sql (usar postgres como usuario)
 
+2.1.- Opcionalmente, en el archivo pg-desafio-sentences.sql estan las sentencias para crear las tablas, insertar datos y crear las secuencias
+
 3.- Abrir XAMPP Control Panel, en la sección Apache ir a config -> PHP -> buscar las líneas:
 
 	extension=pdo_pgsql
